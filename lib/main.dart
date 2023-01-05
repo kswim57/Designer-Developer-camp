@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'theme_color.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -29,39 +30,67 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
+    var screenSize = MediaQuery.of(context).size;
     return Scaffold(
-      appBar: AppBar(
-        leading: Image.asset("assets/images/stot_logo.png"),
-      ),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+          child: Row(
+            children:[
+              Expanded(
+                flex: 1,
+                child: Column(
+                  children: [
+                    Image.asset(
+                        "assets/images/stot_logo.png",
+                    ),
+                    Container(
+                      height: 100,
+                      color: Colors.red,
+                    ),
+                    TextButton.icon(
+                        onPressed: (){},
+                        icon: const Icon(Icons.person),
+                        label: Text("커뮤니티")
+                    ),
+                    Container(
+                      height: 30,
+                      color: Colors.red,
+                    ),
+                    TextButton.icon(
+                        onPressed: (){},
+                        icon: const Icon(Icons.wallet),
+                        label: Text("지갑")
+                    ),
+                    Container(
+                      height: 30,
+                      color: Colors.red,
+                    ),
+                    TextButton.icon(
+                        onPressed: (){},
+                        icon: const Icon(Icons.person_pin_circle_outlined),
+                        label: Text("프로필")
+                    ),
+                  ],
+                ),
+              ),
+              Expanded(
+                flex: 8,
+                child: Column(
+                  children: [
+                    Container(
+                      color: Colors.blue,
+                    ),
+                    Container(
+                      color: Colors.red,
+                    )
+                  ],
+                ),
+              ),
+            ],
+          )
+      )
     );
   }
 }
